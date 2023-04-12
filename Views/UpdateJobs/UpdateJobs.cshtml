@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Update page";
+}
+<h1>@ViewData["Title"]</h1>
+@{
+    Jobs currentJob = (Jobs)ViewData["job"];
+}
+<form method="post">
+    <div class="row mb-3">
+        <label class="col-sm-1 col-form-label">Job Id</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="Id" value="@currentJob.Id" required />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-1 col-form-label">Job Name</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="Name" value="@currentJob.Name" required />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-1 col-form-label">Job category</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="category" value="@currentJob.category" required />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-1 col-form-label">Job Employeer Name</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="Employeer Name" value="@currentJob.employeerName" required />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-1 col-form-label">Job Description</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="Description" value="@currentJob.Description" required />
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn-primary btn-sm style=" text-decoration: none"">Submit</button>
+    </div>
+
+</form>
