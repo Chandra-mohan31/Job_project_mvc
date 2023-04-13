@@ -49,5 +49,76 @@ namespace Job_Project.Controllers
             ViewData["jobsList"] = jobsList;
             return View();
         }
+        [HttpPost]
+        public IActionResult viewJobs(string filter,string value)
+        {
+            string val = (string)Request.Form["Val"];
+            filter = (string)Request.Form["filter"];
+
+
+            Console.WriteLine("post triggered");
+            Console.WriteLine(val);
+            Console.WriteLine(filter);
+
+
+
+            jobsList = new List<Jobs>();
+            try
+            {
+                string connString = configuration.GetConnectionString("jobsDB");
+                SqlConnection conn = new SqlConnection(connString);
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
+                if(filter.Length == 0 || val.Length == 0)
+                {
+                    cmd.CommandText = "select * from jobs";
+
+                }
+                else
+                {
+                    if(filter == "category" && val.Length > 0)
+                    {
+                        cmd.CommandText = $"select * from jobs where JOB_CATEGORY = '{val}'";
+
+                    }
+                    if(filter == "employeer")
+                    {
+                        cmd.CommandText = $"select * from jobs where JOB_EMPLOYEER_NAME = '{val}'";
+
+                    }
+
+                    if(filter == "jobName")
+                    {
+                        cmd.CommandText = $"select * from jobs where JOB_NAME = '{val}'";
+
+                    }
+                }
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Jobs job = new Jobs();
+
+                    job.Id = (int)reader["Job_id"];
+                    job.Name = (string)reader["Job_name"];
+                    job.employeerName = (string)reader["job_employeer_name"];
+                    job.category = (string)reader["job_category"];
+                    job.Description = (string)reader["job_Description"];
+
+                    jobsList.Add(job);
+
+
+                }
+                reader.Close();
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            ViewData["jobsList"] = jobsList;
+            return View();
+        }
+        
     }
 }
