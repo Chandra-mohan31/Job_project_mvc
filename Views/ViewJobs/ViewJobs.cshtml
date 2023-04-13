@@ -4,4 +4,42 @@
 @{
 }
 
-<h1>View Jobs Page</h1>
+
+@{
+    ViewData["Title"] = "Admin page";
+}
+<h1>@ViewData["Title"]</h1>
+<a class='btn-primary btn-sm' style="text-decoration: none" href="/CreateJobs/CreateJobs">Add Job</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Job Name</th>
+            <th>Job Description</th>
+            <th>Job Employeer Name</th>
+            <th>Job Category</th>
+        </tr>
+    </thead>
+
+    @foreach (var job in (List<Jobs>)ViewData["jobsList"])
+    {
+        <tr>
+            <td>@job.Id</td>
+            <td>@job.Name</td>
+            <td>@job.Description</td>
+            <td>@job.employeerName</td>
+            <td>@job.category</td>
+            <td>
+                <a style="text-decoration: none" href=/UpdateJobs/UpdateJobs/?Id=@job.Id>
+                    <button class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+            <td>
+                <a style="text-decoration: none" href=/DeleteJobs/DeleteJobs/?Id=@job.Id>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
