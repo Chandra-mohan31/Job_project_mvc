@@ -71,7 +71,7 @@ namespace Job_Project.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return View("UpdateConfirmed");
+            return RedirectToAction("ViewJobs","ViewJobs");
         }
 
         public IActionResult UpdateConfirmed()

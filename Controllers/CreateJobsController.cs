@@ -40,7 +40,7 @@ namespace Job_Project.Controllers
             {
                 Console.WriteLine(e.Message);
             }
-            return View();
+            return RedirectToAction("ViewJobs","ViewJobs");
         }
 
     }

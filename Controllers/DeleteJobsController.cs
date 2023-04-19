@@ -56,7 +56,7 @@ namespace Job_Project.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
-            return View("DeleteConfirmed");
+            return RedirectToAction("ViewJobs","ViewJobs");
         }
 
         public IActionResult DeleteConfirmed()

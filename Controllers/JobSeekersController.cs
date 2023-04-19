@@ -78,18 +78,18 @@ namespace Job_Project.Controllers
                 {
                     if(filter == "category" && val.Length > 0)
                     {
-                        cmd.CommandText = $"select * from jobs where JOB_CATEGORY = '{val}'";
+                        cmd.CommandText = $"select * from jobs where JOB_CATEGORY like '{val}%'";
 
                     }
                     if(filter == "employeer")
                     {
-                        cmd.CommandText = $"select * from jobs where JOB_EMPLOYEER_NAME = '{val}'";
+                        cmd.CommandText = $"select * from jobs where JOB_EMPLOYEER_NAME like '{val}%'";
 
                     }
 
                     if(filter == "jobName")
                     {
-                        cmd.CommandText = $"select * from jobs where JOB_NAME = '{val}'";
+                        cmd.CommandText = $"select * from jobs where JOB_NAME like '{val}%'";
 
                     }
                 }

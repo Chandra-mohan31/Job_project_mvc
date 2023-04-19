@@ -3,36 +3,41 @@
 *@
 @{
 }
-<p>Welcome JobSeekers</p>
+
 
 @{
-    ViewData["Title"] = "View Jobs";
+    ViewData["Title"] = "Jobs Available";
 }
-<h1>@ViewData["Title"]</h1>
 
 <form method="post">
  
 
-    <div class="row mb-3">
-        <label class="col-sm-1 col-form-label">Filter</label>
-        <div class="col-sm-4">
-            <select id="filter" name="filter">
-                <option value="category">Category</option>
-                <option value="jobName">Job Name</option>
-                <option value="employeer">Employeer</option>
-            </select>
+<div class="d-flex justify-content-start">
+        <div class="d-flex align-items-center mx-2">
+            <label class="col-form-label me-2">Filter</label>
+            <div class="">
+                <select id="filter" name="filter">
+                    <option value="category">Category</option>
+                    <option value="jobName">Job Name</option>
+                    <option value="employeer">Employeer</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-1 col-form-label">Enter Value</label>
-        <div class="col-sm-4">
-            <input type="text" class="form-control" name="Val" value="" />
+        <div class="mx-2 d-flex align-items-center ">
+            <label class="col-form-label me-2">Value</label>
+            <div class="">
+                <input type="text" class="form-control" placeholder="enter the search term" name="Val" value="" />
+            </div>
         </div>
-    </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Search</button>
+            <a class="btn btn_primary text-decoration-none border-2 border-secondary" href="ViewJobs">Remove filter</a>
+        </div>
+</div>
 
-    <button class="btn btn-primary" type="submit">Search</button>
-    <a class="btn btn_primary text-decoration-none border-2 border-secondary" href="ViewJobs">Remove filter</a>
+    
   </form>
+  <h1>List of Jobs</h1>
 <table class="table">
     <thead>
         <tr>
